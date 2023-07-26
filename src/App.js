@@ -1,7 +1,7 @@
 import React from "react";
 
 // import logo from './logo.svg';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/Homepage";
@@ -9,9 +9,21 @@ import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import CampsitesDirectoryPage from "./pages/CampsitesDirectoryPage";
 import CampsiteDetailPage from "./pages/CampsiteDetailPage";
+import { fetchPartners } from "./features/partners/partnersSlice";
+import { fetchCampsites } from "../features/campsites/campsitesSlice";
+
 import "./App.css";
+import { useDispatch, dispatch } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCampsites());
+    dispatch(fetchPartners());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Header />
