@@ -19,6 +19,7 @@ const UserLoginForm = () => {
   const dispatch = useDispatch();
 
   const handleLogin = (values) => {
+    console.log("firing?");
     const currentUser = {
       id: Date.now(),
       avatar: defaultAvatar,
@@ -70,7 +71,7 @@ const UserLoginForm = () => {
                     placeholder="username"
                     className="form-control"
                   />
-                  <ErrorMessage name="rating">
+                  <ErrorMessage name="username">
                     {(msg) => <p className="text-danger">{msg}</p>}
                   </ErrorMessage>
                 </FormGroup>
@@ -80,13 +81,14 @@ const UserLoginForm = () => {
                     id="password"
                     name="password"
                     placeholder="password"
+                    type="password"
                     className="form-control"
                   />
-                  <ErrorMessage name="rating">
+                  <ErrorMessage name="password">
                     {(msg) => <p className="text-danger">{msg}</p>}
                   </ErrorMessage>
                 </FormGroup>
-                <Button type="sumbit" color="primary">
+                <Button type="submit" color="primary">
                   Submit
                 </Button>
               </Form>
