@@ -2,7 +2,7 @@ export const validateCommentForm = (values) => {
   const errors = {};
 
   if (!values.ratings) {
-    errors.properties = "Required";
+    errors.rating = "Required";
   }
   if (values.author.length < 2) {
     errors.author = "Must be at least 2 characters.";
