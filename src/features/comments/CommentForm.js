@@ -10,7 +10,7 @@ import {
   FormGroup,
 } from "reactstrap";
 import { validateCommentForm } from "../../utils/validateCommentForm";
-import { addComment } from "./commentsSlice";
+import { postComment } from "./commentsSlice";
 
 const CommentForm = ({ campsiteId }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -18,6 +18,7 @@ const CommentForm = ({ campsiteId }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
+    console.log("firing?");
     const comment = {
       campsiteId: parseInt(campsiteId),
       rating: values.rating,
@@ -26,7 +27,7 @@ const CommentForm = ({ campsiteId }) => {
       date: new Date(Date.now()).toISOString(),
     };
     console.log("comment:", comment);
-    dispatch(addComment(comment));
+    dispatch(postComment(comment));
     setModalOpen(false);
   };
 
